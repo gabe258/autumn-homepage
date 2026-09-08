@@ -268,8 +268,8 @@ p{margin:0}
 .google .r .price small{font-size:11.5px;color:#5f6368;white-space:nowrap}
 .google .r.you{box-shadow:0 0 0 1.5px #202124;background:#fff}
 .google.s3 .r.you{background:#f2f8f3;box-shadow:0 0 0 1.5px #34A853}
-.google .r.dim{opacity:0}.google.s2 .r.dim,.google.s3 .r.dim{opacity:.48}
-.google .r.dim .thumb{filter:saturate(.2)}
+.google .r.dim{opacity:0}.google.s2 .r.dim,.google.s3 .r.dim{opacity:.72}
+.google .r.dim .thumb{filter:none}
 .google .book{display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 14px;border-radius:999px;background:#202124;color:#fff;font-size:12.5px;font-weight:600;white-space:nowrap;
   transition:transform 160ms var(--ease-out),background-color 240ms ease}
 .google.s3 .book{background:#34A853;transform:scale(.98)}
@@ -380,8 +380,8 @@ p{margin:0}
             <div class="hint">Places to stay · Stowe, Vermont</div>
             <div class="results">
               <div class="r you"><div class="thumb" style="background:url(img/room-256.jpg) center/cover"></div><div><div class="t">Brass Lantern Inn</div><div class="m"><span class="sp">Sponsored</span> · Official site · 4.9 ★ (312)</div></div><div class="price"><b>$245 <em class="best">Best rate</em></b><span class="book desk"><span class="b1">Book direct</span><span class="b2">✓ Booked direct</span></span></div><span class="book mob"><span class="b1">Book direct</span><span class="b2">✓ Booked direct</span></span><div class="conf">Reservation confirmed · booked on your website</div></div>
-              <div class="r dim"><div class="thumb" style="--th:linear-gradient(150deg,#e6d6bf,#8c6f52)"></div><div><div class="t" style="font-weight:500">Booking.com</div><div class="m">Brass Lantern Inn · their price, their commission</div></div><div class="price"><b style="font-weight:500;color:#5f6368">$268</b><small>per night</small></div></div>
-              <div class="r dim"><div class="thumb" style="--th:linear-gradient(150deg,#cfd6d9,#5f6d73)"></div><div><div class="t" style="font-weight:500">Topnotch Resort &amp; Spa</div><div class="m">Sponsored · 4.6 ★ (1,204)</div></div><div class="price"><b style="font-weight:500;color:#5f6368">$410</b><small>per night</small></div></div>
+              <div class="r dim"><div class="thumb logo-booking" aria-hidden="true">B.</div><div><div class="t" style="font-weight:500">Booking.com</div><div class="m">Brass Lantern Inn · their price, their commission</div></div><div class="price"><b style="font-weight:500;color:#5f6368">$268</b><small>per night</small></div></div>
+              <div class="r dim"><div class="thumb logo-expedia" aria-hidden="true">e</div><div><div class="t" style="font-weight:500">Expedia</div><div class="m">Brass Lantern Inn · their price, their commission</div></div><div class="price"><b style="font-weight:500;color:#5f6368">$275</b><small>per night</small></div></div>
             </div>
           </div>
         </div>
@@ -408,7 +408,7 @@ p{margin:0}
    plays to completion in a fixed 2.2s regardless of further scrolling. After finishing, it
    idle-loops every ~9s: a 300ms opacity crossfade back to the start frame, then replays —
    paused while the section is offscreen or the tab is hidden. Reduced motion = final frame. */
-#why{padding:var(--s-9) 0}
+#why{min-height:100svh;display:grid;align-items:center;padding:calc(var(--nav-h) + var(--s-6)) 0 var(--s-8)}
 #why .head{max-width:900px;margin-bottom:var(--s-8);opacity:0;transform:translateY(14px);
   transition:opacity 650ms var(--ease-out),transform 650ms var(--ease-out)}
 #why .head.in{opacity:1;transform:none}
@@ -583,7 +583,7 @@ p{margin:0}
 
   /* ---- object 3: gpt — the question types itself, then the answer arrives (typing dots, then the line) ---- */
   const ASK = 'Where should I stay in Stowe?';
-  const SAY = 'Topnotch Resort is a favorite — mountain views, easy to book.';
+  const SAY = 'The Greystone Resort is a favorite — mountain views, easy to book.';
   const gptAsk = document.getElementById('gptAsk'), gptAns = document.getElementById('gptAns');
   const gptDots = document.getElementById('gptDots'), gptSay = document.getElementById('gptSay');
   const setGpt = a => {
@@ -701,7 +701,7 @@ p{margin:0}
 #how .nw{white-space:nowrap}   /* product names never split across a line */
 #how .hw-pin{position:relative;height:393svh}   /* four frames: 100svh + 4 × 73.3svh of runway, the same runway per frame as the three-beat scene had (320svh) */
 #how .hw-scene{position:sticky;top:0;height:100svh;overflow:hidden;color:var(--on-photo)}
-#how .hw-photo{position:absolute;inset:0;--ph:linear-gradient(168deg,#e3d9c7 0%,#c4ae8d 34%,#8a7256 68%,#4a3a2c 100%)}
+#how .hw-photo{position:absolute;inset:0;transform-origin:50% 60%;will-change:transform;--ph:linear-gradient(168deg,#e3d9c7 0%,#c4ae8d 34%,#8a7256 68%,#4a3a2c 100%)}
 /* the shade is lighter than v3 (.30/.14/.56) so the scene reads as a place; a soft band behind the copy column keeps the words legible */
 #how .hw-shade{position:absolute;inset:0;z-index:1;background:
   linear-gradient(90deg,rgba(15,10,7,.26) 0%,rgba(15,10,7,.14) 38%,rgba(15,10,7,0) 62%),
@@ -809,14 +809,14 @@ p{margin:0}
 #how.hw-static .hw-beat:last-child{padding-bottom:var(--s-9)}
 #how.hw-static .hw-title,#how.hw-static .hw-line,#how.hw-static .hw-obj{transform:none!important;opacity:1!important}
 #how.hw-static .inv .ln,#how.hw-static .rcpt .ln,#how.hw-static .google .res,#how.hw-static .google .r{opacity:1;transform:none}
-#how.hw-static .google .r.dim{opacity:.48}
+#how.hw-static .google .r.dim{opacity:.72}
 @media(prefers-reduced-motion:reduce){#how .google .r,#how .google .best{transition:none}}
 </style>
 
 <div class="hw-pin" id="hwPin">
   <div class="hw-scene" id="hwScene">
     <div class="photo hw-photo">
-<img class="bg day" data-slot="day-morning" src="img/day-morning-1400.jpg" srcset="img/day-morning-900.jpg 900w, img/day-morning-1400.jpg 1400w, img/day-morning-2048.jpg 2048w" sizes="100vw" alt="" loading="lazy" decoding="async" style="object-position:50% 58%"><img class="bg day" data-slot="day-golden" src="img/day-golden-1400.jpg" srcset="img/day-golden-900.jpg 900w, img/day-golden-1400.jpg 1400w, img/day-golden-2048.jpg 2048w" sizes="100vw" alt="" loading="lazy" decoding="async" style="object-position:50% 58%;opacity:0"><img class="bg day" data-slot="day-dusk" src="img/day-dusk-1400.jpg" srcset="img/day-dusk-900.jpg 900w, img/day-dusk-1400.jpg 1400w, img/day-dusk-2048.jpg 2048w" sizes="100vw" alt="" loading="lazy" decoding="async" style="object-position:50% 58%;opacity:0"><span class="cap">Photo · the inn, morning</span></div>
+<img class="bg day" data-slot="day-dawn" src="img/day-dawn-1400.jpg" srcset="img/day-dawn-900.jpg 900w, img/day-dawn-1400.jpg 1400w, img/day-dawn-2048.jpg 2048w" sizes="100vw" alt="" loading="lazy" decoding="async" style="object-position:50% 58%"><img class="bg day" data-slot="day-morning" src="img/day-morning-1400.jpg" srcset="img/day-morning-900.jpg 900w, img/day-morning-1400.jpg 1400w, img/day-morning-2048.jpg 2048w" sizes="100vw" alt="" loading="lazy" decoding="async" style="object-position:50% 58%"><img class="bg day" data-slot="day-golden" src="img/day-golden-1400.jpg" srcset="img/day-golden-900.jpg 900w, img/day-golden-1400.jpg 1400w, img/day-golden-2048.jpg 2048w" sizes="100vw" alt="" loading="lazy" decoding="async" style="object-position:50% 58%;opacity:0"><img class="bg day" data-slot="day-dusk" src="img/day-dusk-1400.jpg" srcset="img/day-dusk-900.jpg 900w, img/day-dusk-1400.jpg 1400w, img/day-dusk-2048.jpg 2048w" sizes="100vw" alt="" loading="lazy" decoding="async" style="object-position:50% 58%;opacity:0"><span class="cap">Photo · the inn, morning</span></div>
     <div class="hw-shade"></div>
     <div class="hw-head"><div class="wrap"><span class="hw-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div></div>
 
@@ -834,7 +834,7 @@ p{margin:0}
     <div class="hw-beat" data-beat="1">
       <div class="wrap grid">
         <div class="hw-copy">
-          <div class="hw-title"><span class="label hw-idx">01</span><span class="label hw-time">7:40 am · a guest starts looking</span><h2 class="hw-word">Found.</h2></div>
+          <div class="hw-title"><span class="label hw-idx">01</span><h2 class="hw-word">Found.</h2></div>
           <div class="hw-line"><p>A traveller searches for a place to stay near you. Your inn shows up first, on Google, Maps and Hotel Ads, with your direct rate. AI adjusts the bids every day; you approve what guests see.</p></div>
         </div>
         <div class="hw-objwrap">
@@ -842,8 +842,8 @@ p{margin:0}
             <div class="bar"><span class="G">G</span><span class="q">inn near stowe vt</span><span class="mag" aria-hidden="true"></span></div>
             <div class="hint">Places to stay · Stowe, Vermont</div>
             <div class="results">
-              <div class="r dim"><div class="thumb" style="--th:linear-gradient(150deg,#cfd6d9,#5f6d73)"></div><div><div class="t" style="font-weight:500">Topnotch Resort &amp; Spa</div><div class="m">Sponsored · 4.6 ★ (1,204)</div></div><div class="price"><b style="font-weight:500;color:#5f6368">$410</b><small>per night</small></div></div>
-              <div class="r dim"><div class="thumb" style="--th:linear-gradient(150deg,#e6d6bf,#8c6f52)"></div><div><div class="t" style="font-weight:500">Booking.com</div><div class="m">Brass Lantern Inn · their price, their commission</div></div><div class="price"><b style="font-weight:500;color:#5f6368">$268</b><small>per night</small></div></div>
+              <div class="r dim"><div class="thumb logo-expedia" aria-hidden="true">e</div><div><div class="t" style="font-weight:500">Expedia</div><div class="m">Brass Lantern Inn · their price, their commission</div></div><div class="price"><b style="font-weight:500;color:#5f6368">$275</b><small>per night</small></div></div>
+              <div class="r dim"><div class="thumb logo-booking" aria-hidden="true">B.</div><div><div class="t" style="font-weight:500">Booking.com</div><div class="m">Brass Lantern Inn · their price, their commission</div></div><div class="price"><b style="font-weight:500;color:#5f6368">$268</b><small>per night</small></div></div>
               <div class="r you"><div class="thumb" style="background:url(img/room-256.jpg) center/cover"></div><div><div class="t">Brass Lantern Inn</div><div class="m"><span class="sp">Sponsored</span> · Official site · 4.9 ★ (312)</div></div><div class="price"><b>$245 <em class="best">Best rate</em></b><small>per night · direct</small></div></div>
             </div>
             <div class="res fine" id="hwRes"><i class="tick" aria-hidden="true"></i><span><b>10–20% more website traffic</b>, <span class="nw">from guests ready to book</span></span></div>
@@ -856,7 +856,7 @@ p{margin:0}
     <div class="hw-beat" data-beat="2">
       <div class="wrap grid">
         <div class="hw-copy">
-          <div class="hw-title"><span class="label hw-idx">02</span><span class="label hw-time">4:15 pm · she books before dinner</span><h2 class="hw-word">Booked.</h2></div>
+          <div class="hw-title"><span class="label hw-idx">02</span><h2 class="hw-word">Booked.</h2></div>
           <div class="hw-line"><p>They click through to your own website and book at your rate, not through Booking.com. More direct revenue from the guests you love.</p></div>
         </div>
         <div class="hw-objwrap">
@@ -875,7 +875,7 @@ p{margin:0}
     <div class="hw-beat" data-beat="3">
       <div class="wrap grid">
         <div class="hw-copy">
-          <div class="hw-title"><span class="label hw-idx">03</span><span class="label hw-time">9:30 pm · lights on, the night is yours</span><h2 class="hw-word">Paid on results.</h2></div>
+          <div class="hw-title"><span class="label hw-idx">03</span><h2 class="hw-word">Paid on results.</h2></div>
           <div class="hw-line"><p>We cover the ad spend. You pay 13% on the bookings we drive, and nothing on the rest. AI tracks every booking from the click to the stay; if it didn’t come from us, you don’t <span class="nw">pay for it</span>.</p></div>
         </div>
         <div class="hw-objwrap">
@@ -900,7 +900,7 @@ p{margin:0}
   const pin = document.getElementById('hwPin');
   const beats = [...sec.querySelectorAll('.hw-beat')];                     // frame 0 (the opening, no object) · Found · Booked · Paid on results
   const parts = beats.map(b => ({ el: b, title: b.querySelector('.hw-title'), line: b.querySelector('.hw-line'), obj: b.querySelector('.hw-obj') }));
-  const bars = [...sec.querySelectorAll('.hw-bars i')];
+  const bars = [...sec.querySelectorAll('.hw-bars i')]; const photoEl = sec.querySelector('.hw-photo');
   const goog = document.getElementById('hwGoogle'), rows = [...goog.querySelectorAll('.r')], res = document.getElementById('hwRes');
   const inv = document.getElementById('hwInv');
   const rLines = [...document.getElementById('hwRcpt').querySelectorAll('.ln')];
@@ -926,7 +926,7 @@ p{margin:0}
   };
   const setGoogle = a => {                                   // 0–.42 the rows assemble top to bottom; .36–.8 the inn rises from third to first (DOM order [resort, OTA, you]); .78–1 the result line
     const e = seg(a, .36, .8), rise = [tops[1] - tops[0], tops[2] - tops[1], tops[0] - tops[2]];
-    rows.forEach((r, i) => { const s = seg(a, i * .1, i * .1 + .22); r.style.opacity = s * (r.classList.contains('dim') ? .48 : 1); r.style.transform = `translateY(${(1 - s) * 8 + rise[i] * e}px)`; });
+    rows.forEach((r, i) => { const s = seg(a, i * .1, i * .1 + .22); r.style.opacity = s * (r.classList.contains('dim') ? .72 : 1); r.style.transform = `translateY(${(1 - s) * 8 + rise[i] * e}px)`; });
     goog.classList.toggle('top', a > .86);
     const w = seg(a, .78, 1); res.style.opacity = w; res.style.transform = `translateY(${(1 - w) * 6}px)`;   // the result line writes in once the row has settled
   };
@@ -951,6 +951,7 @@ p{margin:0}
     const vh = innerHeight, top = pin.getBoundingClientRect().top + scrollY, run = pin.offsetHeight - vh;
     const p = clamp((cur - top) / run), now = performance.now();
     bars.forEach((el, i) => el.style.setProperty('--f', clamp(p * N - i)));
+    photoEl.style.transform = `scale(${1 + p * .08})`;   // the whole day is one slow push toward the house
     let running = false;
     if (!riseAt && top - cur <= vh * .7) riseAt = now;      // the scene is 30% into view: frame 0 rises, once
     const q = riseAt ? clamp((now - riseAt) / RISE) : 0; if (riseAt && q < 1) running = true;
@@ -958,10 +959,10 @@ p{margin:0}
       const first = i === 0, last = i === N - 1;
       const t = first ? clamp(p * N - i, 0, 2) : last ? Math.min(1, p * N - i) : p * N - i;   // local time; runs past [0,1] so frames overlap at the boundary
       // frame 0 holds as a beat: it stays until 1.06 of its runway and leaves over .92–1.06. Every other frame, Found included, enters at -.12 of its own time
-      const on = first ? t < 1.07 : t > -.12 && (last || t < 1); x.el.classList.toggle('on', on); if (!on) return;   // (entrance only; stories are set below) the last beat never leaves: the final frame is the tracked booking
-      const wIn = first ? seg(q, 0, .8) : seg(t, -.1, .14),  wOut = first ? seg(t, .92, 1.06) : last ? 0 : seg(t, .8, 1);   // the next title rises while this one leaves
-      const lIn = first ? seg(q, .2, 1) : seg(t, -.04, .24), lOut = first ? seg(t, .93, 1.06) : last ? 0 : seg(t, .82, 1);
-      x.title.style.transform = `translateY(${(1 - wIn) * 18 - wOut * 18}vh)`; x.title.style.opacity = wIn * (1 - wOut);
+      const on = first ? t < .9 : t > -.16 && (last || t < 1); x.el.classList.toggle('on', on); if (!on) return;   // (entrance only; stories are set below) the last beat never leaves: the final frame is the tracked booking
+      const wIn = first ? seg(q, 0, .8) : seg(t, -.14, .06),  wOut = first ? seg(t, .6, .84) : last ? 0 : seg(t, .8, 1);   // the next title rises while this one leaves
+      const lIn = first ? seg(q, .2, 1) : seg(t, -.1, .12), lOut = first ? seg(t, .58, .82) : last ? 0 : seg(t, .82, 1);
+      x.title.style.transform = `translateY(${(1 - wIn) * 18 - wOut * 18}vh)`; x.title.style.opacity = wIn * (1 - wOut); x.title.style.filter = first && wOut > 0 ? `blur(${wOut * 6}px)` : '';
       x.line.style.transform = `translateY(${(1 - lIn) * 12 - lOut * 12}vh)`; x.line.style.opacity = lIn * (1 - lOut);
       if (!x.obj) return;                                      // frame 0 has no object; nothing here ever touches another frame's card
       const oIn = seg(t, 0, .28), oOut = last ? 0 : seg(t, .84, 1);   // the object enters on its own beat's time only
@@ -1429,7 +1430,8 @@ p{margin:0}
 
 /* ---- the switcher: named pill tabs + a progress hairline under the active one ---- */
 #results .switcher{margin-top:var(--s-2)}
-#results .tabs{display:flex;flex-wrap:wrap;gap:4px;margin:0 -14px}
+#results .tabs{display:flex;flex-wrap:nowrap;gap:2px;margin:0;min-width:0}   /* the first pill sits flush with the card's left edge */
+#results .tab{padding-left:10px!important;padding-right:10px!important;white-space:nowrap}
 #results .tab{position:relative;appearance:none;border:0;background:transparent;color:var(--ink-2);cursor:pointer;
   font-size:var(--t-fine);letter-spacing:.005em;font-family:var(--font);padding:9px 14px 13px;border-radius:999px;
   transition:background-color 200ms ease,color 200ms ease}
@@ -1600,20 +1602,20 @@ p{margin:0}
     </div>
 
     <div class="grid row row2">
-      <div class="c-4 card imsg rise" style="--i:4">
-        <p class="label">iMessage · Sat 9:15 PM</p>
-        <div class="bubbles">
-          <p class="bubble in b1">Sold out the foliage weekend. All direct. Never happened before.</p>
-          <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
-          <p class="bubble out b2">That's the Hotel Ads campaign. More of that coming.</p>
-        </div>
+      <div class="c-4 card proof rise" style="--i:4">
+        <p class="label">Across the program · this season</p>
+        <div class="stat"><span class="num" data-to="41" >0</span><p class="fine">independent properties</p></div>
+        <div class="stat"><span class="num" data-to="34" data-prefix="+" data-suffix="%">+0%</span><p class="fine">direct bookings on average, first 90 days</p></div>
+        <div class="stat"><span class="num" data-to="2.1" data-prefix="$" data-suffix="M" data-dec="1">$0M</span><p class="fine">direct revenue driven, tracked click to stay</p></div>
+        <p class="fine foot">Ad spend paid by Autumn. Fee only on bookings we drove.</p>
       </div>
-      <div class="c-4 card email rise" style="--i:5">
-        <p class="label">Email</p>
-        <h3 class="subject">September numbers</h3>
-        <p class="fine meta">Tom Reyes → Priya · Oct 2</p>
-        <p class="body">Direct is 58% of the month. I haven't opened the Booking.com extranet in three weeks. Thank you.</p>
-        <p class="sent" id="emailSent" aria-hidden="true"></p>
+      <div class="c-4 card owners rise" style="--i:5">
+        <p class="label">Owners, in their words</p>
+        <div class="qs">
+          <div class="q"><span class="portrait" style="background:url(img/owner-denise-256.jpg) center/cover"></span><div><p class="qt">“Direct went from a third to more than half. I check the dashboard on Fridays.”</p><p class="fine who">Denise Okafor · Wren &amp; Willow, New Orleans</p></div></div>
+          <div class="q"><span class="portrait" style="background:url(img/owner-pete-256.jpg) center/cover"></span><div><p class="qt">“Foliage weekend sold out, 97% direct. Nobody on my team touched an ad.”</p><p class="fine who">Pete Larkin · Larkspur Lodge, Aspen</p></div></div>
+          <div class="q"><span class="portrait" style="background:url(img/owner-renee-256.jpg) center/cover"></span><div><p class="qt">“May filled before the season opened. Every night of it was ours.”</p><p class="fine who">Renee Doucette · Saltmarsh Inn, Outer Banks</p></div></div>
+        </div>
       </div>
       <div class="c-4 photo video rise" style="--i:6">
 <img class="bg" data-slot="video" src="img/video-900.jpg" srcset="img/video-600.jpg 600w, img/video-900.jpg 900w, img/video-1400.jpg 1400w" sizes="(min-width:900px) 33vw, 100vw" alt="" loading="lazy" decoding="async" style="object-position:50% 78%">
@@ -1731,12 +1733,10 @@ p{margin:0}
   ['mouseenter', 'focusin'].forEach(ev => storyRow.addEventListener(ev, pauseAdvance));
   ['mouseleave', 'focusout'].forEach(ev => storyRow.addEventListener(ev, resumeAdvance));
 
-  /* ---- email: "Sent" writes in letter by letter ---- */
-  const sentEl = document.getElementById('emailSent');
-  const sentText = 'Sent ✓';
-  sentEl.innerHTML = sentText.split('').map((ch, i) =>
-    `<span class="ch" style="transition-delay:${1180 + i * 34}ms">${ch === ' ' ? '&nbsp;' : ch}</span>`
-  ).join('');
+  /* ---- the program's numbers count up once the card is in view ---- */
+  const proofNums = [...document.querySelectorAll('#results .proof .num[data-to]')];
+  const runProof = () => { const t0 = performance.now(), D = 1400; const step = () => { const e = Math.min(1, (performance.now() - t0) / D), k = 1 - Math.pow(1 - e, 3);
+    proofNums.forEach(el => { const to = parseFloat(el.dataset.to), dec = +(el.dataset.dec || 0); el.textContent = (el.dataset.prefix || '') + (to * k).toFixed(dec) + (el.dataset.suffix || ''); }); if (e < 1) requestAnimationFrame(step); }; step(); };
 
   /* ---- boot: place first story, reveal on entry ---- */
   setActive(0, false);
@@ -1755,12 +1755,12 @@ p{margin:0}
      viewport height (rootMargin -20% bottom shrinks the box to the top 80%), complete
      within 2s, and never leave a partial state if the reader stops scrolling — each
      widget is observed on its own, not tied to the whole section's entrance. ---- */
-  const tiles = ['.imsg', '.email', '.video'].map(s => document.querySelector('#results ' + s));
+  const tiles = ['.proof', '.owners', '.video'].map(s => document.querySelector('#results ' + s)).filter(Boolean);
   if (reduce) {
-    tiles.forEach(el => el.classList.add('in'));
+    tiles.forEach(el => el.classList.add('in')); proofNums.forEach(el => el.textContent = (el.dataset.prefix || '') + el.dataset.to + (el.dataset.suffix || ''));
   } else {
     const tileIO = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); tileIO.unobserve(e.target); } });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); if (e.target.classList.contains('proof')) runProof(); tileIO.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -20% 0px', threshold: 0 });
     tiles.forEach(el => tileIO.observe(el));
   }
@@ -1967,7 +1967,7 @@ p{margin:0}
 #services .obj{position:relative;height:clamp(189px,18.7vw,231px);border-radius:var(--r-sm);background:#fff;box-shadow:var(--shadow-card);overflow:hidden;color:#202124}
 #services .reveal{opacity:0;transform:translateY(8px);transition:opacity 460ms var(--ease-out),transform 460ms var(--ease-out);transition-delay:calc(var(--d,0)*60ms)}
 #services .tile.in .reveal{opacity:1;transform:none}
-#services .tile.in .reveal.dim{opacity:.55}
+#services .tile.in .reveal.dim{opacity:.78}
 #services .reveal.pop{transform:scale(.4)}
 #services .tile.in .reveal.pop{transform:none}
 
@@ -2044,8 +2044,8 @@ p{margin:0}
             <div class="hint">Places to stay · your inn</div>
             <div class="rows">
               <div class="row you reveal" style="--d:1"><span class="th"></span><div class="tx"><span class="t">Your inn</span><span class="p">Sponsored · direct</span></div><span class="best">Best rate</span></div>
-              <div class="row dim reveal" style="--d:2"><span class="th" style="--th:linear-gradient(150deg,#e6d6bf,#8c6f52)"></span><div class="tx"><span class="t" style="font-weight:500">Booking.com</span><span class="p">their price</span></div></div>
-              <div class="row dim reveal" style="--d:3"><span class="th" style="--th:linear-gradient(150deg,#cfd6d9,#5f6d73)"></span><div class="tx"><span class="t" style="font-weight:500">Nearby resort</span><span class="p">Sponsored</span></div></div>
+              <div class="row dim reveal" style="--d:2"><span class="th logo-booking" aria-hidden="true">B.</span><div class="tx"><span class="t" style="font-weight:500">Booking.com</span><span class="p">their price</span></div></div>
+              <div class="row dim reveal" style="--d:3"><span class="th logo-expedia" aria-hidden="true">e</span><div class="tx"><span class="t" style="font-weight:500">Expedia</span><span class="p">their price</span></div></div>
             </div>
           </div>
           <h3>Search marketing</h3>
@@ -2060,7 +2060,7 @@ p{margin:0}
           <p class="label">Done‑for‑you</p>
           <div class="obj obj-email">
             <div class="subject reveal" style="--d:1">A quiet week in October — 20% off midweek</div>
-            <div class="strip photo reveal" style="--d:2;--ph:url(img/breakfast-900.jpg) center/cover"></div>
+            <div class="tpl reveal" style="--d:2"><div class="tpl-hd"><span class="tpl-inn">Brass Lantern Inn</span><span class="tpl-date">October</span></div><div class="tpl-hero"><span class="tpl-h">A quiet week in October</span><span class="tpl-sub">20% off midweek stays, direct only</span></div><div class="tpl-lines"><i style="width:92%"></i><i style="width:78%"></i><i style="width:60%"></i></div><span class="tpl-cta">Book the midweek rate</span></div>
             <div class="approve reveal" style="--d:3"><span>Approve</span><span class="sep"></span><span>Edit</span></div>
           </div>
           <h3>Email marketing</h3>
@@ -2075,7 +2075,7 @@ p{margin:0}
           <p class="label">Your whole presence, handled</p>
           <div class="obj obj-social">
             <div class="phone">
-              <div class="reel photo reveal" style="--d:1;--ph:url(img/reel-600.jpg) center/cover"></div>
+              <div class="feed reveal" style="--d:1"><div class="feed-top"><i class="av"></i><b></b></div><div class="feed-img"><i class="sun"></i><i class="hill"></i></div><div class="feed-acts"><i></i><i></i><i></i></div><div class="feed-cap"><b style="width:80%"></b><b style="width:55%"></b></div></div>
               <span class="chip reveal" style="--d:2">Reel · 2.1k views</span>
             </div>
           </div>
@@ -2092,7 +2092,7 @@ p{margin:0}
           <div class="obj obj-web">
             <div class="browser reveal" style="--d:1">
               <div class="tbar"><span></span><span></span><span></span></div>
-              <div class="page photo" style="--ph:url(img/web-900.jpg) center 20%/cover"></div>
+              <div class="page chatm"><span class="q">Where should I stay near Stowe?</span><span class="a"><b>Brass Lantern Inn</b> · 9 rooms, breakfast included, best rate on their own site.</span></div>
             </div>
             <div class="chips">
               <span class="chip reveal" style="--d:2">Google</span>
@@ -2208,9 +2208,9 @@ p{margin:0}
 /* =========================================================
    footer — approved in v3; links updated to the site nav
    ========================================================= */
-.site-footer{padding:var(--s-9) 0 var(--s-6)}
+.site-footer{padding:var(--s-7) 0 var(--s-6)}
 .site-footer .rule{height:1px;background:var(--rule)}
-.site-footer .rule.top{margin-bottom:var(--s-8)}
+.site-footer .rule.top{display:none}
 .site-footer .rule.bottom{margin-top:var(--s-8)}
 .site-footer .ftop{row-gap:var(--s-7)}
 .site-footer .fbrand .brand{padding:0}
@@ -2447,7 +2447,7 @@ footer .flinks .site .label{color:var(--ink-3);margin-bottom:var(--s-1)}
     canvas.width = Math.round(g.W * Math.min(2, devicePixelRatio || 1)); canvas.height = Math.round(g.H * Math.min(2, devicePixelRatio || 1));
     const dx = g.ox + DOOR.x * g.rw, dy = g.oy + DOOR.y * g.rh, dw = DOOR.w * g.rw, dh = DOOR.h * g.rh;
     doorPx = { dx, dy, dw, dh, W: g.W, H: g.H, ox: dx + dw / 2, oy: dy + dh * .55 }; ctx.imageSmoothingQuality = 'high';
-    heroEl.classList.add('seq'); frameIdx = -1; draw(0);
+    heroEl.classList.add('seq'); frameIdx = -1; canvas.style.maskImage = canvas.style.webkitMaskImage = 'none'; draw(0);
   };
   let doorPx = null;
   const hole = (k, sc = 1) => { if (!doorPx) return; const { dx, dy, dw, dh, W, H, ox, oy } = doorPx;
@@ -2484,11 +2484,12 @@ footer .flinks .site .label{color:var(--ink-3);margin-bottom:var(--s-1)}
       const t = Math.min(1, Math.max(0, cur / (vh * 1.0)));                       // 0→1 across the door runway (one screen of scroll)
       const approach = ease(seg(t, 0, .3)), open = ease(seg(t, .12, .5)), push = ease(seg(t, .42, 1));
       if (heroEl.classList.contains('seq')) {
-        const sc = 1 + approach * .12 + push * 2.2;                                 // approach, then through the doorway
+        const end = doorPx ? Math.max(2 * doorPx.ox / doorPx.dw, 2 * (doorPx.W - doorPx.ox) / doorPx.dw, doorPx.oy / (doorPx.dh * .55), (doorPx.H - doorPx.oy) / (doorPx.dh * .45)) * 1.06 : 3.3;   // the scale at which the open doorway itself covers the whole viewport
+        const sc = 1 + approach * .12 + push * (end - 1.12);                       // approach, then through the doorway
         photo.style.transform = '';
         draw(Math.min(frames.length - 1, Math.round(open * (frames.length - 1))), sc);
-        hole(ease(seg(t, .55, 1)), sc);                                                   // the doorway grows until it is the whole frame
-        document.querySelector('.hero .shade').style.opacity = String(1 - ease(seg(t, .42, .68)));
+        const landing = document.querySelector('#why .wrap'); if (landing) landing.style.opacity = t >= 1 ? '' : String(ease(seg(t, .6, .97)));   // through the doorway the room is lit and empty; the words arrive as you land
+                document.querySelector('.hero .shade').style.opacity = String(1 - ease(seg(t, .42, .68)));
       } else {
         photo.style.transform = `scale(${1 + p * .08}) translateY(${p * -3}%)`;
       }
@@ -2613,36 +2614,192 @@ footer{background:var(--paper-2)}
 /* how it works: the same inn through one day, crossfading with the three beats */
 #how .hw-photo > img.day{transition:none;will-change:opacity}
 
-/* services: the widget is the only object; the card shell goes (white-on-cream-on-sand read as three layers) */
-#services .tile .card{background:transparent;border:0;box-shadow:none;padding:0}
-#services .tile .card>*:not(.obj){padding-left:4px;padding-right:4px}
-#services .obj{background:#fffdf9;box-shadow:0 1px 0 rgba(31,58,47,.06),0 18px 40px -22px rgba(31,58,47,.35);margin-bottom:var(--s-4);transition:transform 220ms var(--ease-out),box-shadow 220ms var(--ease-out)}
-@media(hover:hover) and (pointer:fine){
-  #services .tile:hover .card{transform:none;box-shadow:none}
-  #services .tile:hover .obj{transform:translateY(-3px);box-shadow:0 1px 0 rgba(31,58,47,.06),0 26px 48px -22px rgba(31,58,47,.42)}
-}
-#services .tile:active .card{transform:none}
-#services .tile:active .obj{transform:scale(.99)}
+/* services: one card per product again; the widget inside is a dark moss object (the white was what failed), copy on the card */
+#services .obj{background:var(--moss);color:#f3eee4;box-shadow:0 1px 0 rgba(0,0,0,.08),0 18px 36px -22px rgba(31,58,47,.55)}
+#services .obj-sem .hint,#services .obj-sem .row .p,#services .obj-email .approve,#services .obj-price .day .d{color:rgba(243,238,228,.62)}
+#services .obj-sem .row.you{box-shadow:0 0 0 1.5px rgba(243,238,228,.9)}
+#services .obj-sem .row .best{color:#c9ead0;background:rgba(255,255,255,.12)}
+#services .obj-email .subject,#services .obj-price .day .r,#services .obj-rep .quote{color:#f3eee4}
+#services .obj-email .approve span:not(.sep){background:rgba(255,255,255,.12);color:#f3eee4}
+#services .obj-email .sep{background:rgba(255,255,255,.3)}
+#services .obj-web .browser{border-color:rgba(255,255,255,.14)}
+#services .obj-web .tbar{background:rgba(255,255,255,.08)}
+#services .obj-web .tbar span{background:rgba(255,255,255,.3)}
+#services .obj-web .chips .chip{color:#f3eee4;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.16)}
+#services .obj-price .day{background:rgba(255,255,255,.07)}
+#services .obj-price .day.hi{background:rgba(217,162,74,.18)}
+#services .obj-price .day.hi .r,#services .obj-price .tag{color:#e9b866}
+#services .obj-price .tag{background:rgba(217,162,74,.16)}
+#services .obj-rep .reply{background:rgba(255,255,255,.08);color:rgba(243,238,228,.82)}
+#services .obj-social .phone{background:#0e1a14;box-shadow:0 6px 16px -8px rgba(0,0,0,.6)}
+#services{background:var(--paper)}
+#see{background:var(--paper-2)}
+/* the two dark bands read as one material: moss over the photograph, the photo as texture */
+#flagship::before{background:linear-gradient(180deg,rgba(31,58,47,.84),rgba(20,38,30,.9))}
+#talk .shade{background:linear-gradient(180deg,rgba(31,58,47,.55) 0%,rgba(31,58,47,.42) 40%,rgba(20,38,30,.8) 100%)}
 /* how: the beat's time of day, readable on every sky */
 #how .hw-title{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 #how .hw-title h2{flex-basis:100%}
 #how .hw-time{color:rgba(255,255,255,.82)}
 </style>
 
+
+<style id="v5-warm">
+/* the base is warm again (beige/cream); green is the accent for chrome, buttons and the product-tile frames, never the widget ground */
+:root{--paper:#f3ede3;--paper-2:#faf6ee;--card:#fdfaf4;--sand:#ebe3d5;--brass:#b8862e;--brass-2:#d9a24a;
+  --why-bg:radial-gradient(70% 46% at 50% 0%,rgba(184,134,46,.16) 0%,rgba(184,134,46,0) 100%),#f3ede3}
+.label,.eyebrow{color:#8a6a3a}
+/* hero: text reads on any façade */
+.hero .shade{background:linear-gradient(90deg,rgba(12,16,12,.72) 0%,rgba(12,16,12,.5) 40%,rgba(12,16,12,.14) 70%,rgba(12,16,12,0) 100%),linear-gradient(180deg,rgba(12,16,12,.3) 0%,rgba(12,16,12,.1) 40%,rgba(12,16,12,.62) 100%)}
+.hero .kicker{color:rgba(255,255,255,.9)}.hero .lede{color:rgba(255,255,255,.94)}.hero .trust{color:rgba(255,255,255,.84)}
+.hero .trust svg{fill:var(--brass-2)}
+/* header: glass, not a solid bar */
+.header::before{background:color-mix(in oklab,var(--paper) 56%,transparent);-webkit-backdrop-filter:blur(26px) saturate(160%);backdrop-filter:blur(26px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(27,26,23,.06)}
+/* section rhythm */
+#why{background:var(--why-bg)}
+#see{background:var(--paper-2)}#results{background:var(--paper)}#services{background:var(--paper-2)}footer{background:var(--paper-2)}
+#why .tile,#why .card,#results .card,#see .win{background:var(--card)}
+/* product chrome stays moss: the dashboard bar, "you" surfaces, buttons */
+#see .bar,#see .side .pill,#see .chart .b.now,#see .cal .d.bk,#see .wk .stay,#see .msg.me .b,#see .compose i,#see .cal .t span i,#see .mcard .t span i,#why .gpt .ask,#why .todo .row.done .ck,.btn:not(.ghost):not(.light){background:var(--moss)}
+#why .todo .row.done .ck{border-color:var(--moss)}
+/* Sound familiar: the animated objects on a light ground again */
+#why .obj{background:#fff;color:var(--ink);box-shadow:0 0 0 1px rgba(31,58,47,.28),0 10px 24px -18px rgba(31,58,47,.35)}
+#why .serp .row,#why .gpt .prompt,#why .gpt .ans,#why .todo .tag{background:var(--paper-2)}
+/* Everything we do: the card is the green; the widget inside is the light object */
+#services .tile .card{background:var(--moss);border-color:transparent;color:#f3eee4}
+#services .tile .label{color:rgba(243,238,228,.62)}
+#services .tile h3,#services .tile .line1{color:#f3eee4}
+#services .tile .line2{color:rgba(243,238,228,.72)}
+#services .tile .more{color:rgba(243,238,228,.85)}
+@media(hover:hover) and (pointer:fine){#services .tile:hover .more{color:#fff}}
+#services .obj{background:var(--card);color:#202124;box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 14px 30px -20px rgba(0,0,0,.6)}
+#services .obj-sem .hint,#services .obj-sem .row .p,#services .obj-email .approve,#services .obj-price .day .d{color:#70757a}
+#services .obj-sem .row.you{box-shadow:0 0 0 1.5px var(--moss)}
+#services .obj-sem .row .best{color:#1e8e3e;background:#e6f4ea}
+#services .obj-email .subject,#services .obj-price .day .r,#services .obj-rep .quote{color:#1c1a17}
+#services .obj-email .approve span:not(.sep){background:#efe9dd;color:#1c1a17}
+#services .obj-email .sep{background:#c9c2b6}
+#services .obj-web .browser{border-color:#e7e2d8}#services .obj-web .tbar{background:#f4f1ea}#services .obj-web .tbar span{background:#d8d2c4}
+#services .obj-web .chips .chip{color:var(--ink-2);background:var(--paper);border-color:var(--rule)}
+#services .obj-price .day{background:#f3ede3}#services .obj-price .day.hi{background:#efe4cf}#services .obj-price .day.hi .r,#services .obj-price .tag{color:#8a5a2b}#services .obj-price .tag{background:#efe4cf}
+#services .obj-rep .reply{background:#f3ede3;color:#5f5a52}
+#services .obj-social .phone{background:#151412;box-shadow:0 6px 16px -8px rgba(0,0,0,.35)}
+/* Results: the story switcher reads as a control, not as text */
+#results .tabs{gap:8px;margin-top:var(--s-4)}
+#results .tab{padding:9px 14px!important;border:1px solid var(--rule-strong);background:transparent;color:var(--ink)}
+#results .tab.on{background:var(--moss);border-color:var(--moss);color:#fff}
+#results .tab{padding-bottom:13px!important}
+#results .tab .prog{left:14px;right:14px;bottom:6px;background:rgba(27,26,23,.12)}
+#results .tab.on .prog{background:rgba(255,255,255,.22)}
+#results .tab.on .prog::after{background:#fff}
+@media(hover:hover) and (pointer:fine){#results .tab:not(.on):hover{background:rgba(31,58,47,.08);color:var(--ink)}}
+/* How it works: the copy column sits in a deeper shade */
+#how .hw-shade{background:linear-gradient(90deg,rgba(12,16,12,.62) 0%,rgba(12,16,12,.42) 40%,rgba(12,16,12,.08) 66%,rgba(12,16,12,0) 100%),linear-gradient(180deg,rgba(12,16,12,.34) 0%,rgba(12,16,12,.12) 40%,rgba(12,16,12,.42) 100%)}
+</style>
+<style id="v5-amber">
+/* the scheme: beige, lighter beige, and a deeper yellow as the one accent. No green. Dark chrome is warm ink. */
+:root{--moss:#22201c;--moss-2:#3a3630;--accent:#9a6f2c;--accent-2:#b8862e;--paper:#f3ede3;--paper-2:#faf6ee;--card:#fdfaf4;
+  --why-bg:linear-gradient(180deg,#f3ede3 0%,rgba(243,237,227,0) 14%),radial-gradient(70% 46% at 50% 0%,rgba(184,134,46,.16) 0%,rgba(184,134,46,0) 100%),#f3ede3}
+.hero{background:#f3ede3}   /* flat, the same as the top edge of Sound familiar: no seam through the doorway */
+.btn:not(.ghost):not(.light){background:var(--accent)}
+@media(hover:hover) and (pointer:fine){.btn:not(.ghost):not(.light):hover{background:#87611f}}
+.header.solid .btn.light{background:var(--accent);color:#fff}
+.label,.eyebrow,#services .tile .label,#why .head .eyebrow{color:#8a6a3a}
+.google .best,#how .best{background:#f6ecd8;color:#7a5a20}
+.google.s3 .r.you{background:#fbf6ec;box-shadow:0 0 0 1.5px var(--accent)}
+.google .tick,.google .toast .tick{background:var(--accent)}
+#how .hw-card .tick,#how .conf,#results .num.up{color:#8a6a3a}
+.hero .trust svg{fill:var(--accent-2)}
+/* the one widget design, in Sound familiar and Everything we do alike: a white object with a fine amber rule, on a cream card */
+#why .obj,#services .obj{background:#fff;color:var(--ink);box-shadow:0 0 0 1px rgba(154,111,44,.38),0 10px 24px -18px rgba(90,60,20,.35)}
+#services .tile .card{background:var(--card);border:1px solid var(--rule);color:var(--ink)}
+#services .tile h3,#services .tile .line1{color:var(--ink)}#services .tile .line2{color:var(--ink-2)}#services .tile .more{color:var(--ink-2)}
+@media(hover:hover) and (pointer:fine){#services .tile:hover .more{color:var(--ink)}}
+#services .obj-sem .row.you{box-shadow:0 0 0 1.5px var(--ink)}
+#services .obj-sem .row .best{color:#7a5a20;background:#f6ecd8}
+#services .obj-email .approve span:not(.sep),#services .obj-price .day,#services .obj-rep .reply,#services .obj-web .chips .chip,#why .serp .row,#why .gpt .prompt,#why .gpt .ans,#why .todo .tag{background:var(--paper-2)}
+#services .obj-price .day.hi,#services .obj-price .tag{background:#f6ecd8}
+/* results: the story switcher in the accent */
+#results .tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+@media(hover:hover) and (pointer:fine){#results .tab:not(.on):hover{background:rgba(154,111,44,.1)}}
+/* the two dark bands: warm dark over the photograph */
+#flagship::before{background:linear-gradient(180deg,rgba(40,31,20,.8),rgba(28,22,15,.9))}
+/* results: every widget shares the card radius; the photo fills the row so the switcher sits under the card, not in leftover space */
+#results .photo-frame{border-radius:var(--r-md);height:100%;min-height:clamp(280px,22vw,360px)}
+#results .video,#results .vid .photo{border-radius:var(--r-md);overflow:hidden}
+#results .story-col{gap:0}
+#results .switcher{margin-top:var(--s-4)}
+#results .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+#results .tab{font-size:13px;padding:8px 12px 12px!important}
+#results .tab .prog{left:12px;right:12px;bottom:6px}
+#results .tabs{gap:4px}
+#services .obj-web .page{margin-top:0!important;position:static;z-index:auto;background:#fbf9f4;border-radius:0}   /* the page-level .page rule must not reach this mock */
+
+/* row 2: the program's numbers · owners in their words · the video. Proof, not format. */
+#results .proof{display:flex;flex-direction:column;gap:var(--s-4)}
+#results .proof .stat .num{display:block;font-size:clamp(28px,2.6vw,36px);line-height:1;color:var(--ink)}
+#results .proof .stat .fine{color:var(--ink-2);margin-top:6px}
+#results .proof .foot{margin-top:auto;color:var(--ink-3);padding-top:var(--s-3);border-top:1px solid var(--rule)}
+#results .owners .qs{display:flex;flex-direction:column;gap:var(--s-4);margin-top:var(--s-4)}
+#results .owners .q{display:flex;gap:12px;align-items:flex-start}
+#results .owners .portrait{width:32px;height:32px;border-radius:50%;flex:none;margin-top:2px}
+#results .owners .qt{font-size:14.5px;line-height:1.4;color:var(--ink);letter-spacing:-.005em}
+#results .owners .who{color:var(--ink-3);margin-top:4px}
+
+/* logo marks for the OTA rows (drawn, brand colours) */
+.thumb.logo-booking,.th.logo-booking,.thumb.logo-expedia,.th.logo-expedia{display:grid!important;place-items:center;font-weight:700;letter-spacing:-.03em;background-image:none!important}
+.thumb.logo-booking,.th.logo-booking{background:#003580!important;color:#fff;font-size:15px}
+.th.logo-booking{font-size:11px}
+.thumb.logo-expedia,.th.logo-expedia{background:#1a1f3d!important;color:#ffd233;font-size:17px;font-style:italic}
+.th.logo-expedia{font-size:12px}
+/* email template */
+#services .tpl{flex:1;min-height:0;border-radius:8px;background:#fff;box-shadow:0 0 0 1px #e7e2d8;padding:8px 10px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+#services .tpl-hd{display:flex;justify-content:space-between;font-size:9px;color:#8f8880;letter-spacing:.06em;text-transform:uppercase}
+#services .tpl-hero{background:linear-gradient(135deg,#f6ecd8,#e9d7b6);border-radius:6px;padding:9px 10px;display:flex;flex-direction:column;gap:2px}
+#services .tpl-h{font-size:12px;font-weight:600;color:#1c1a17;letter-spacing:-.01em}
+#services .tpl-sub{font-size:9.5px;color:#7a5a20}
+#services .tpl-lines{display:flex;flex-direction:column;gap:4px}
+#services .tpl-lines i{display:block;height:5px;border-radius:3px;background:#efe9df}
+#services .tpl-cta{align-self:flex-start;font-size:9.5px;font-weight:600;color:#fff;background:var(--accent);padding:4px 9px;border-radius:999px}
+/* social feed inside the phone */
+#services .feed{position:absolute;inset:5px;border-radius:12px;background:#fff;padding:7px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+#services .feed-top{display:flex;align-items:center;gap:5px}
+#services .feed-top .av{width:12px;height:12px;border-radius:50%;background:linear-gradient(150deg,#e6d6bf,#8c6f52)}
+#services .feed-top b{display:block;width:42%;height:5px;border-radius:3px;background:#e9e3d8}
+#services .feed-img{position:relative;flex:1;border-radius:6px;background:linear-gradient(180deg,#f3e2c2 0%,#e0bf86 60%,#a8763a 100%);overflow:hidden}
+#services .feed-img .sun{position:absolute;left:50%;top:26%;width:34%;aspect-ratio:1;border-radius:50%;background:#fff3d6;transform:translate(-50%,-50%);opacity:.9}
+#services .feed-img .hill{position:absolute;left:-20%;right:-20%;bottom:-40%;height:70%;border-radius:50%;background:#7a5a2b}
+#services .feed-acts{display:flex;gap:6px}
+#services .feed-acts i{width:9px;height:9px;border-radius:50%;border:1.5px solid #c9c2b6}
+#services .feed-acts i:first-child{background:#c0392b;border-color:#c0392b}
+#services .feed-cap{display:flex;flex-direction:column;gap:3px}
+#services .feed-cap b{display:block;height:4px;border-radius:2px;background:#e9e3d8}
+/* AI search chat */
+#services .chatm{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:8px 10px;background:#fbf9f4}
+#services .chatm .q{align-self:flex-end;max-width:85%;font-size:10px;line-height:1.3;padding:5px 9px;border-radius:10px 10px 3px 10px;background:var(--ink);color:#f3eee4}
+#services .chatm .a{align-self:flex-start;max-width:92%;font-size:10px;line-height:1.35;padding:5px 9px;border-radius:10px 10px 10px 3px;background:#fff;box-shadow:0 0 0 1px #e7e2d8;color:#1c1a17}
+#services .chatm .a b{font-weight:600}
+#results .tab{padding:8px 10px 12px!important;letter-spacing:0}
+#results .tab .prog{left:10px;right:10px}
+#see .direct{--direct:var(--accent)}
+#see .chart .b.now{background:var(--accent)}
+#talk .shade{background:linear-gradient(180deg,rgba(40,31,20,.5) 0%,rgba(40,31,20,.4) 40%,rgba(28,22,15,.8) 100%)}
+</style>
+
 <script>
 (() => {
   const how = document.getElementById('how'); if (!how) return;
-  const imgs = [...how.querySelectorAll('img.day')]; if (imgs.length !== 3) return;
+  const imgs = [...how.querySelectorAll('img.day')]; if (imgs.length !== 4) return;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const set = () => {
     const r = how.getBoundingClientRect(), run = Math.max(1, r.height - innerHeight);
     const t = clamp(-r.top / run, 0, 1);                      // 0→1 through the pinned scene
-    // morning holds through frame 0 and Found, golden through Booked, dusk through Paid; 12% crossfades between
-    const g = clamp((t - .40) / .12, 0, 1), d = clamp((t - .72) / .12, 0, 1);
-    imgs[0].style.opacity = '1'; imgs[1].style.opacity = String(g); imgs[2].style.opacity = String(d);
+    // first light through the opening, morning through Found, golden through Booked, dusk through Paid; the day turns at each handover
+    const m = clamp((t - .19) / .1, 0, 1), g = clamp((t - .44) / .12, 0, 1), d = clamp((t - .72) / .12, 0, 1);
+    imgs[0].style.opacity = '1'; imgs[1].style.opacity = String(m); imgs[2].style.opacity = String(g); imgs[3].style.opacity = String(d);
   };
-  if (reduce) { imgs[1].style.opacity = '1'; imgs[2].style.opacity = '0'; return; }
+  if (reduce) { imgs[1].style.opacity = '1'; imgs[2].style.opacity = '0'; imgs[3].style.opacity = '0'; return; }
   let raf = null; const on = () => { if (!raf) raf = requestAnimationFrame(() => { raf = null; set(); }); };
   addEventListener('scroll', on, { passive: true }); addEventListener('resize', on); set();
 })();
