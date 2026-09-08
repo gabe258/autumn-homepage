@@ -723,7 +723,8 @@ p{margin:0}
 #how .hw-open .hw-copy{grid-column:1/span 10}
 #how .hw-h2{font-size:var(--t-h2);font-weight:500;letter-spacing:-.025em;line-height:1.04;margin-left:-.02em;color:var(--on-photo)}
 #how .hw-h2 .l{display:block;text-wrap:balance}   /* each sentence is its own line box: where it wraps it wraps inside itself, balanced, never a one-word last line */
-#how .hw-open .hw-line{max-width:min(60ch,calc((100% - 9*var(--gap)) / 10 * 7 + 6*var(--gap)))}   /* 7 of the copy's 10 columns */
+#how .hw-open .hw-line{max-width:62ch}
+#how .hw-open .hw-line p{text-wrap:pretty;font-size:clamp(17px,1.35vw,20px);line-height:1.5}   /* 7 of the copy's 10 columns */
 #how .hw-open .hw-line p+p{margin-top:12px}   /* two thoughts, two lines, 12px apart */
 @media(max-width:899px){#how .hw-open .hw-copy{grid-column:1/-1}#how .hw-open .hw-line{max-width:60ch}}
 /* the composed pair: index (label) · word (display scale, 500) · line — one column, one rhythm.
@@ -778,6 +779,8 @@ p{margin:0}
 
 /* ---- object 1: the Google result list (hero card; the inn rises from third to first) ---- */
 #how .google{transform:none;transition:none;padding:12px}
+#how .google .r .thumb{width:64px;height:64px;border-radius:12px}
+#how .thumb.logo-booking{font-size:19px}
 #how .google .bar{height:44px;font-size:15px}
 #how .google .mag{width:30px;height:30px}
 #how .google .r{opacity:0;transform:translateY(8px);transition:box-shadow 300ms ease,background-color 300ms ease;position:relative;z-index:0}   /* rows assemble as Found's story starts; the story writes opacity (dim rows settle at .48) */
@@ -2043,7 +2046,7 @@ p{margin:0}
           <div class="obj obj-sem">
             <div class="hint">Places to stay · your inn</div>
             <div class="rows">
-              <div class="row you reveal" style="--d:1"><span class="th"></span><div class="tx"><span class="t">Your inn</span><span class="p">Sponsored · direct</span></div><span class="best">Best rate</span></div>
+              <div class="row you reveal" style="--d:1"><span class="th" style="background:url(img/room-256.jpg) center/cover"></span><div class="tx"><span class="t">Your inn</span><span class="p">Sponsored · direct</span></div><span class="best">Best rate</span></div>
               <div class="row dim reveal" style="--d:2"><span class="th logo-booking" aria-hidden="true">B.</span><div class="tx"><span class="t" style="font-weight:500">Booking.com</span><span class="p">their price</span></div></div>
               <div class="row dim reveal" style="--d:3"><span class="th logo-expedia" aria-hidden="true">e</span><div class="tx"><span class="t" style="font-weight:500">Expedia</span><span class="p">their price</span></div></div>
             </div>
@@ -2733,6 +2736,40 @@ footer{background:var(--paper-2)}
 #results .tab{font-size:13px;padding:8px 12px 12px!important}
 #results .tab .prog{left:12px;right:12px;bottom:6px}
 #results .tabs{gap:4px}
+
+/* brand marks: Expedia's arc-and-plane on navy; Booking.com's B. on its blue */
+.thumb.logo-expedia,.th.logo-expedia{font-size:0!important;background:#1a1f3d url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><path d='M9 28a12.5 12.5 0 0 1 22.5-8.5' stroke='%23ffd233' stroke-width='3.6' fill='none' stroke-linecap='round'/><path d='M27.5 9.5l4.6 4.2-7.6 2.9-1.8-2.2z' fill='%23ffd233'/></svg>") center/76% no-repeat!important}
+/* everything we do: each widget keeps moving quietly once it has entered */
+@media(prefers-reduced-motion:no-preference){
+  #services .tile.in .obj-sem .row.you{animation:semGlow 6s ease-in-out 1.2s infinite}
+  @keyframes semGlow{0%,100%{box-shadow:0 0 0 1.5px var(--ink)}50%{box-shadow:0 0 0 1.5px var(--accent),0 0 0 6px rgba(154,111,44,.14)}}
+  #services .tile.in .obj-sem .row.you .best{animation:semBest 6s ease-in-out 1.2s infinite}
+  @keyframes semBest{0%,40%,100%{transform:none}50%{transform:scale(1.08)}}
+  #services .tile.in .tpl-lines i{animation:tplType 7s ease-in-out infinite}
+  #services .tile.in .tpl-lines i:nth-child(2){animation-delay:.5s}#services .tile.in .tpl-lines i:nth-child(3){animation-delay:1s}
+  @keyframes tplType{0%,10%{transform:scaleX(.15)}30%,85%{transform:scaleX(1)}100%{transform:scaleX(.15)}}
+  #services .tpl-lines i{transform-origin:left}
+  #services .tile.in .tpl-cta{animation:tplCta 7s ease-in-out infinite}
+  @keyframes tplCta{0%,32%{opacity:0;transform:translateY(4px)}42%,88%{opacity:1;transform:none}100%{opacity:0}}
+  #services .tile.in .feed-acts i:first-child{animation:heartPop 5s ease-in-out 1s infinite}
+  @keyframes heartPop{0%,20%{background:transparent;border-color:#c9c2b6;transform:none}30%{background:#c0392b;border-color:#c0392b;transform:scale(1.35)}38%,90%{background:#c0392b;border-color:#c0392b;transform:none}100%{background:transparent;border-color:#c9c2b6}}
+  #services .tile.in .feed-img .sun{animation:sunRise 9s ease-in-out infinite}
+  @keyframes sunRise{0%,100%{transform:translate(-50%,-30%)}50%{transform:translate(-50%,-60%)}}
+  #services .tile.in .chatm .q{animation:chatQ 8s ease-in-out infinite}
+  #services .tile.in .chatm .a{animation:chatA 8s ease-in-out infinite}
+  @keyframes chatQ{0%{opacity:0;transform:translateY(6px)}8%,92%{opacity:1;transform:none}100%{opacity:0}}
+  @keyframes chatA{0%,22%{opacity:0;transform:translateY(6px)}32%,92%{opacity:1;transform:none}100%{opacity:0}}
+  #services .tile.in .obj-price .day.hi{animation:priceTick 7s ease-in-out infinite}
+  #services .tile.in .obj-price .day.hi:last-child{animation-delay:.4s}
+  @keyframes priceTick{0%,40%{background:#efe4cf}50%{background:#e8cf9d}62%,100%{background:#efe4cf}}
+  #services .tile.in .obj-price .tag{animation:tagBlink 7s ease-in-out infinite}
+  @keyframes tagBlink{0%,44%{opacity:.7}54%{opacity:1;transform:scale(1.05)}64%,100%{opacity:.7;transform:none}}
+  #services .tile.in .stars > *{animation:starFill 6s ease-in-out infinite}
+  #services .tile.in .stars > *:nth-child(2){animation-delay:.12s}#services .tile.in .stars > *:nth-child(3){animation-delay:.24s}#services .tile.in .stars > *:nth-child(4){animation-delay:.36s}#services .tile.in .stars > *:nth-child(5){animation-delay:.48s}
+  @keyframes starFill{0%{opacity:.25;transform:scale(.8)}12%,90%{opacity:1;transform:none}100%{opacity:.25;transform:scale(.8)}}
+  #services .tile.in .obj-rep .reply{animation:replyIn 6s ease-in-out infinite}
+  @keyframes replyIn{0%,30%{opacity:0;transform:translateY(6px)}42%,92%{opacity:1;transform:none}100%{opacity:0}}
+}
 #services .obj-web .page{margin-top:0!important;position:static;z-index:auto;background:#fbf9f4;border-radius:0}   /* the page-level .page rule must not reach this mock */
 
 /* row 2: the program's numbers · owners in their words · the video. Proof, not format. */
@@ -2747,10 +2784,11 @@ footer{background:var(--paper-2)}
 #results .owners .who{color:var(--ink-3);margin-top:4px}
 
 /* logo marks for the OTA rows (drawn, brand colours) */
-.thumb.logo-booking,.th.logo-booking,.thumb.logo-expedia,.th.logo-expedia{display:grid!important;place-items:center;font-weight:700;letter-spacing:-.03em;background-image:none!important}
+.thumb.logo-booking,.th.logo-booking,.thumb.logo-expedia,.th.logo-expedia{display:grid!important;place-items:center;font-weight:700;letter-spacing:-.03em}
+.thumb.logo-booking,.th.logo-booking{background-image:none!important}
 .thumb.logo-booking,.th.logo-booking{background:#003580!important;color:#fff;font-size:15px}
 .th.logo-booking{font-size:11px}
-.thumb.logo-expedia,.th.logo-expedia{background:#1a1f3d!important;color:#ffd233;font-size:17px;font-style:italic}
+.thumb.logo-expedia,.th.logo-expedia{color:transparent;font-size:0}
 .th.logo-expedia{font-size:12px}
 /* email template */
 #services .tpl{flex:1;min-height:0;border-radius:8px;background:#fff;box-shadow:0 0 0 1px #e7e2d8;padding:8px 10px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
