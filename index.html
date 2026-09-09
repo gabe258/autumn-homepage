@@ -723,8 +723,7 @@ p{margin:0}
 #how .hw-open .hw-copy{grid-column:1/span 10}
 #how .hw-h2{font-size:var(--t-h2);font-weight:500;letter-spacing:-.025em;line-height:1.04;margin-left:-.02em;color:var(--on-photo)}
 #how .hw-h2 .l{display:block;text-wrap:balance}   /* each sentence is its own line box: where it wraps it wraps inside itself, balanced, never a one-word last line */
-#how .hw-open .hw-line{max-width:62ch}
-#how .hw-open .hw-line p{text-wrap:pretty;font-size:clamp(17px,1.35vw,20px);line-height:1.5}   /* 7 of the copy's 10 columns */
+#how .hw-open .hw-line{max-width:min(60ch,calc((100% - 9*var(--gap)) / 10 * 7 + 6*var(--gap)))}   /* 7 of the copy's 10 columns; each sentence balanced into even lines */   /* 7 of the copy's 10 columns */
 #how .hw-open .hw-line p+p{margin-top:12px}   /* two thoughts, two lines, 12px apart */
 @media(max-width:899px){#how .hw-open .hw-copy{grid-column:1/-1}#how .hw-open .hw-line{max-width:60ch}}
 /* the composed pair: index (label) · word (display scale, 500) · line — one column, one rhythm.
