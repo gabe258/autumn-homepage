@@ -2736,6 +2736,12 @@ footer{background:var(--paper-2)}
 #results .tab{font-size:13px;padding:8px 12px 12px!important}
 #results .tab .prog{left:12px;right:12px;bottom:6px}
 #results .tabs{gap:4px}
+@media(max-width:899px){#how .hw-beat.hw-open{align-content:center;padding-top:var(--nav-h)}}   /* the opening sits mid-screen on phones instead of leaving the bottom half empty */
+@media(max-width:899px){
+  #why .obj{height:auto;min-height:184px}                      /* the objects grow to their content on phones: nothing clipped top or bottom */
+  #why .serp{gap:6px}#why .serp .row{padding:8px 10px}
+  #how .google .r .thumb{width:44px;height:44px;border-radius:9px}#how .thumb.logo-booking{font-size:15px}
+}
 
 /* phones: less copy in the hero, the landing never waits on a reveal, the door is desktop-only */
 .hero .kicker-m{display:none}
