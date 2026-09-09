@@ -2736,6 +2736,12 @@ footer{background:var(--paper-2)}
 #results .tab{font-size:13px;padding:8px 12px 12px!important}
 #results .tab .prog{left:12px;right:12px;bottom:6px}
 #results .tabs{gap:4px}
+.hero .cap{display:none!important}                                  /* the caption under the hero is gone on every width */
+@media(max-width:899px){
+  .hero h1{white-space:normal;text-wrap:balance;font-size:clamp(32px,9.6vw,44px);overflow-wrap:anywhere}
+  .hero h1 br{display:none}
+  .hero .stack,.hero .content .wrap{max-width:100%;min-width:0}
+}
 /* the inn's own picture wherever its paperwork appears */
 #how .hw-card .who .th{background:url(img/room-256.jpg) center/cover}
 /* story switcher: four equal pills exactly as wide as the card; two and two on phones */
