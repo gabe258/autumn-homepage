@@ -368,7 +368,7 @@ p{margin:0}
       <div class="wrap grid">
         <div class="c-7 stack">
           <p class="c-12 label kicker rise" style="--i:0">AI‑Enabled Digital Marketing for independent inns, B&amp;Bs and boutique hotels</p><p class="c-12 label kicker rise kicker-m" style="--i:0">AI marketing for independent inns</p>
-          <h1 class="rise" style="--i:1">Turn Google into<br>your #1 direct‑<br>booking channel.</h1>
+          <h1 class="rise" style="--i:1">Turn Google into <br>your #1 direct‑ <br>booking channel.</h1>
           <p class="lede rise" style="--i:2">AI puts your inn at the top of Google so guests book with you, not Booking.com. <span class="lede-more">We cover the ad spend and get paid only when bookings land.</span></p>
           <p class="rise" style="--i:3"><a class="btn light" href="#flagship">See if your property qualifies <span class="arr">→</span></a></p>
           <p class="trust rise" style="--i:4"><span><svg viewBox="0 0 16 16"><path d="M.5 16v-3.8l7.7-5.9-7.8 4c-.3-.5-.4-1.5-.4-1.9C.4 3.8 3.2 1.6 4.6 1c3.3-1.6 9.1-1 11.6-.5.6 3.3-2.3 5.3-3.9 5.9h3c-.3 2.4-3.4 3.6-4.9 3.9h3.2c-.8 1.6-2.4 2.8-3.1 3.2-2.5 1.7-6.5 1-8.1.5V16H.5z"/></svg>No fixed fees</span><span><svg viewBox="0 0 16 16"><path d="M.5 16v-3.8l7.7-5.9-7.8 4c-.3-.5-.4-1.5-.4-1.9C.4 3.8 3.2 1.6 4.6 1c3.3-1.6 9.1-1 11.6-.5.6 3.3-2.3 5.3-3.9 5.9h3c-.3 2.4-3.4 3.6-4.9 3.9h3.2c-.8 1.6-2.4 2.8-3.1 3.2-2.5 1.7-6.5 1-8.1.5V16H.5z"/></svg>Nothing to run yourself</span><span><svg viewBox="0 0 16 16"><path d="M.5 16v-3.8l7.7-5.9-7.8 4c-.3-.5-.4-1.5-.4-1.9C.4 3.8 3.2 1.6 4.6 1c3.3-1.6 9.1-1 11.6-.5.6 3.3-2.3 5.3-3.9 5.9h3c-.3 2.4-3.4 3.6-4.9 3.9h3.2c-.8 1.6-2.4 2.8-3.1 3.2-2.5 1.7-6.5 1-8.1.5V16H.5z"/></svg>You approve everything</span></p>
@@ -489,7 +489,7 @@ p{margin:0}
   <div class="wrap">
     <div class="head" id="whyHead">
       <p class="label eyebrow">Sound familiar?</p>
-      <h2>You built something one of a kind.<br>The guests who&rsquo;d love it can&rsquo;t find&nbsp;it.</h2>
+      <h2>You built something one of a kind. <br>The guests who&rsquo;d love it can&rsquo;t find&nbsp;it.</h2>
     </div>
     <div class="grid tiles" id="whyTiles">
 
@@ -2035,7 +2035,7 @@ p{margin:0}
 <section id="services">
   <div class="wrap grid head">
     <p class="label rise c-12" style="--i:0">Everything we do · all AI‑run, all approved by you</p>
-    <h2 class="rise c-9" style="--i:1">Search marketing is where most inns start.<br>It isn’t where it ends.</h2>
+    <h2 class="rise c-9" style="--i:1">Search marketing is where most inns start. <br>It isn’t where it ends.</h2>
   </div>
   <div class="wrap">
     <div class="tiles">
@@ -2736,6 +2736,20 @@ footer{background:var(--paper-2)}
 #results .tab{font-size:13px;padding:8px 12px 12px!important}
 #results .tab .prog{left:12px;right:12px;bottom:6px}
 #results .tabs{gap:4px}
+/* the inn's own picture wherever its paperwork appears */
+#how .hw-card .who .th{background:url(img/room-256.jpg) center/cover}
+/* story switcher: four equal pills exactly as wide as the card; two and two on phones */
+#results .tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;width:100%}
+#results .tab{width:100%;text-align:center;padding:9px 4px 13px!important;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#results .tab .prog{left:10px;right:10px}
+@media(max-width:899px){
+  #results .tabs{grid-template-columns:1fr 1fr;gap:8px}
+  #results .tab{font-size:14px;padding:11px 8px 15px!important}
+  /* phones: no forced line breaks in headings, and balanced wrapping so no line is left with one word */
+  h1 br,h2 br,h3 br{display:none}
+  h1,h2,h3,.lede,.human,.quote,#why .tile h3,#services .tile h3{text-wrap:balance}
+  #how .hw-line p,.fine{text-wrap:pretty}
+}
 @media(max-width:899px){
   .m-cut{display:none}                                  /* mobile-only cuts: restatements go, the point stays */
   #services .tile .line2{display:none}                  /* the section label already says all AI-run, all approved */
