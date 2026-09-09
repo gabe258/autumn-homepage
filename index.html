@@ -2045,9 +2045,9 @@ p{margin:0}
           <div class="obj obj-sem">
             <div class="hint">Places to stay · your inn</div>
             <div class="rows">
-              <div class="row you reveal" style="--d:1"><span class="th" style="background:url(img/room-256.jpg) center/cover"></span><div class="tx"><span class="t">Your inn</span><span class="p">Sponsored · direct</span></div><span class="best">Best rate</span></div>
               <div class="row dim reveal" style="--d:2"><span class="th logo-booking" aria-hidden="true">B.</span><div class="tx"><span class="t" style="font-weight:500">Booking.com</span><span class="p">their price</span></div></div>
               <div class="row dim reveal" style="--d:3"><span class="th logo-expedia" aria-hidden="true">e</span><div class="tx"><span class="t" style="font-weight:500">Expedia</span><span class="p">their price</span></div></div>
+              <div class="row you reveal" style="--d:1"><span class="th" style="background:url(img/room-256.jpg) center/cover"></span><div class="tx"><span class="t">Your inn</span><span class="p">Sponsored · direct</span></div><span class="best">Best rate</span></div>
             </div>
           </div>
           <h3>Search marketing</h3>
@@ -2735,6 +2735,7 @@ footer{background:var(--paper-2)}
 #results .tab{font-size:13px;padding:8px 12px 12px!important}
 #results .tab .prog{left:12px;right:12px;bottom:6px}
 #results .tabs{gap:4px}
+.brand svg.fall,.site-footer .brand svg.fall,.header .brand svg.fall{width:14px!important;height:14px!important;position:absolute;pointer-events:none;overflow:visible}   /* the falling leaves are leaf-sized, never logo-sized */
 .google .G{background:url(img/logo-google-128.png) center/contain no-repeat!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;color:transparent!important;font-size:0!important;width:22px;height:22px;display:block}
 #see .chat .person .who{background:url(img/priya-256.jpg) center/cover;width:36px;height:36px}
 .hero .cap{display:none!important}                                  /* the caption under the hero is gone on every width */
@@ -2787,51 +2788,65 @@ footer{background:var(--paper-2)}
 
 /* brand marks: Expedia's arc-and-plane on navy; Booking.com's B. on its blue */
 .thumb.logo-expedia,.th.logo-expedia{font-size:0!important;background:#fff url(img/logo-expedia-256.png) center/100% no-repeat!important}
-/* everything we do: every widget loops once it has entered, each on its own 6–8s cycle */
-@media(prefers-reduced-motion:no-preference){
-  /* search: the inn's row lifts with an amber halo and the Best rate chip pops; the OTA rows fall back */
-  #services .tile.in .obj-sem .row.you{animation:semLift 6s ease-in-out 1s infinite}
-  @keyframes semLift{0%,15%{transform:none;box-shadow:0 0 0 1.5px var(--ink)}30%,70%{transform:translateY(-3px);box-shadow:0 0 0 2px var(--accent),0 10px 22px -12px rgba(154,111,44,.55)}85%,100%{transform:none;box-shadow:0 0 0 1.5px var(--ink)}}
-  #services .tile.in .obj-sem .row.you .best{animation:semBest 6s ease-out 1s infinite}
-  @keyframes semBest{0%,18%{opacity:0;transform:scale(.5)}30%{opacity:1;transform:scale(1.15)}36%,78%{opacity:1;transform:none}90%,100%{opacity:0;transform:scale(.5)}}
-  #services .tile.in .obj-sem .row.dim{animation:semDim 6s ease-in-out 1s infinite}
-  @keyframes semDim{0%,15%{opacity:.78}30%,70%{opacity:.4}85%,100%{opacity:.78}}
+/* everything we do: each widget plays its animation once when the tile is hovered, and resets when the pointer leaves */
+#services .obj-sem .row.you .best{opacity:0;transform:scale(.6)}
+#services .obj-sem .row.you{position:relative;z-index:1}
+#services .tpl-lines i{transform-origin:left;transform:scaleX(.15)}
+#services .tpl-cta{opacity:0;transform:translateY(4px)}
+#services .feed-img .sun{transform:translate(-50%,40%);opacity:.6}
+#services .feed-acts i{width:11px;height:11px}
+#services .obj-social .chip{opacity:0;transform:translateY(6px)}
+#services .chatm .a{opacity:0;transform:translateY(6px)}
+#services .obj-price .tag{opacity:0;transform:translateY(4px) scale(.9)}
+#services .obj-rep .reply{opacity:0;transform:translateY(8px)}
+#services .stars > *{opacity:.3;transform:scale(.6)}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  /* search: the inn's row rises from the bottom of the results to the top; the OTAs make room */
+  #services .tile:hover .obj-sem .row.you{animation:semRise 1.4s cubic-bezier(.23,1,.32,1) .2s forwards}
+  @keyframes semRise{0%{transform:none;box-shadow:0 0 0 1.5px var(--ink)}60%{transform:translateY(-102px);box-shadow:0 0 0 2px var(--accent),0 12px 24px -12px rgba(154,111,44,.6)}100%{transform:translateY(-102px);box-shadow:0 0 0 1.5px var(--ink)}}
+  #services .tile:hover .obj-sem .row.dim{animation:semMakeRoom 1.2s cubic-bezier(.23,1,.32,1) .2s forwards}
+  @keyframes semMakeRoom{to{transform:translateY(51px);opacity:.45}}
+  #services .tile:hover .obj-sem .row.you .best{animation:semBest .5s cubic-bezier(.23,1,.32,1) 1.1s forwards}
+  @keyframes semBest{to{opacity:1;transform:none}}
   /* email: the template types itself, then the button arrives */
-  #services .tpl-lines i{transform-origin:left}
-  #services .tile.in .tpl-lines i{animation:tplType 7s ease-in-out infinite}
-  #services .tile.in .tpl-lines i:nth-child(2){animation-delay:.5s}#services .tile.in .tpl-lines i:nth-child(3){animation-delay:1s}
-  @keyframes tplType{0%,10%{transform:scaleX(.15)}30%,85%{transform:scaleX(1)}100%{transform:scaleX(.15)}}
-  #services .tile.in .tpl-cta{animation:tplCta 7s ease-in-out infinite}
-  @keyframes tplCta{0%,32%{opacity:0;transform:translateY(4px)}42%,88%{opacity:1;transform:none}100%{opacity:0}}
+  #services .tile:hover .tpl-lines i{animation:tplType 1s cubic-bezier(.23,1,.32,1) forwards}
+  #services .tile:hover .tpl-lines i:nth-child(2){animation-delay:.25s}#services .tile:hover .tpl-lines i:nth-child(3){animation-delay:.5s}
+  @keyframes tplType{to{transform:scaleX(1)}}
+  #services .tile:hover .tpl-cta{animation:tplCta .5s cubic-bezier(.23,1,.32,1) 1.1s forwards}
+  @keyframes tplCta{to{opacity:1;transform:none}}
   /* social: the sun climbs the post, the heart fills, the views chip pops */
-  #services .feed-acts i{width:11px;height:11px}
-  #services .tile.in .feed-img .sun{animation:sunRise 7s ease-in-out infinite}
-  @keyframes sunRise{0%,12%{transform:translate(-50%,40%);opacity:.6}55%,100%{transform:translate(-50%,-70%);opacity:1}}
-  #services .tile.in .feed-img{animation:skyWarm 7s ease-in-out infinite}
-  @keyframes skyWarm{0%,12%{filter:brightness(.85)}55%,100%{filter:brightness(1.06)}}
-  #services .tile.in .feed-acts i:first-child{animation:heartPop 7s ease-in-out infinite}
-  @keyframes heartPop{0%,55%{background:transparent;border-color:#c9c2b6;transform:none}62%{background:#c0392b;border-color:#c0392b;transform:scale(1.7)}70%,100%{background:#c0392b;border-color:#c0392b;transform:none}}
-  #services .tile.in .obj-social .chip{animation:chipPop 7s ease-out infinite}
-  @keyframes chipPop{0%,60%{opacity:0;transform:translateY(6px)}70%,100%{opacity:1;transform:none}}
-  /* website, SEO & AI search: the question is asked, the answer arrives */
-  #services .tile.in .chatm .q{animation:chatQ 6s ease-in-out infinite}
-  #services .tile.in .chatm .a{animation:chatA 6s ease-in-out infinite}
-  @keyframes chatQ{0%{opacity:0;transform:translateY(6px)}8%,92%{opacity:1;transform:none}100%{opacity:0}}
-  @keyframes chatA{0%,22%{opacity:0;transform:translateY(6px)}32%,92%{opacity:1;transform:none}100%{opacity:0}}
-  /* pricing: the weekend reprices — the two cells lift, turn amber and the tag pops */
-  #services .tile.in .obj-price .day.hi{animation:priceLift 7s ease-in-out infinite}
-  #services .tile.in .obj-price .day.hi:last-child{animation-delay:.35s}
-  @keyframes priceLift{0%,35%{transform:none;background:#f3ede3}48%,75%{transform:translateY(-4px);background:#f0dfb8;box-shadow:0 8px 16px -10px rgba(154,111,44,.5)}90%,100%{transform:none;background:#f3ede3}}
-  #services .tile.in .obj-price .day.hi .r{animation:priceInk 7s ease-in-out infinite}
-  @keyframes priceInk{0%,35%{color:#1c1a17}48%,75%{color:#8a5a2b}90%,100%{color:#1c1a17}}
-  #services .tile.in .obj-price .tag{animation:tagPop 7s ease-out infinite}
-  @keyframes tagPop{0%,40%{opacity:0;transform:translateY(4px) scale(.9)}52%,88%{opacity:1;transform:none}100%{opacity:0}}
+  #services .tile:hover .feed-img .sun{animation:sunRise 1.6s cubic-bezier(.23,1,.32,1) forwards}
+  @keyframes sunRise{to{transform:translate(-50%,-70%);opacity:1}}
+  #services .tile:hover .feed-img{animation:skyWarm 1.6s ease-out forwards}
+  @keyframes skyWarm{from{filter:brightness(.85)}to{filter:brightness(1.06)}}
+  #services .tile:hover .feed-acts i:first-child{animation:heartPop .6s cubic-bezier(.23,1,.32,1) 1.2s forwards}
+  @keyframes heartPop{0%{background:transparent;border-color:#c9c2b6;transform:none}50%{background:#c0392b;border-color:#c0392b;transform:scale(1.7)}100%{background:#c0392b;border-color:#c0392b;transform:none}}
+  #services .tile:hover .obj-social .chip{animation:chipPop .5s cubic-bezier(.23,1,.32,1) 1.5s forwards}
+  @keyframes chipPop{to{opacity:1;transform:none}}
+  /* website, SEO & AI search: the answer arrives */
+  #services .tile:hover .chatm .a{animation:chatA .6s cubic-bezier(.23,1,.32,1) .5s forwards}
+  @keyframes chatA{to{opacity:1;transform:none}}
+  /* pricing: the weekend reprices — the two cells lift and turn amber, the tag pops */
+  #services .tile:hover .obj-price .day.hi{animation:priceLift .9s cubic-bezier(.23,1,.32,1) .2s forwards}
+  #services .tile:hover .obj-price .day.hi:last-child{animation-delay:.4s}
+  @keyframes priceLift{to{transform:translateY(-4px);background:#f0dfb8;box-shadow:0 8px 16px -10px rgba(154,111,44,.5)}}
+  #services .tile:hover .obj-price .day.hi .r{animation:priceInk .9s ease-out .2s forwards}
+  @keyframes priceInk{to{color:#8a5a2b}}
+  #services .tile:hover .obj-price .tag{animation:tagPop .5s cubic-bezier(.23,1,.32,1) 1s forwards}
+  @keyframes tagPop{to{opacity:1;transform:none}}
   /* reputation: five stars land one after another, then the reply is drafted */
-  #services .tile.in .stars > *{animation:starLand 7s ease-out infinite}
-  #services .tile.in .stars > *:nth-child(2){animation-delay:.15s}#services .tile.in .stars > *:nth-child(3){animation-delay:.3s}#services .tile.in .stars > *:nth-child(4){animation-delay:.45s}#services .tile.in .stars > *:nth-child(5){animation-delay:.6s}
-  @keyframes starLand{0%,6%{opacity:0;transform:scale(.3)}12%{opacity:1;transform:scale(1.3)}16%,88%{opacity:1;transform:none}96%,100%{opacity:0;transform:scale(.3)}}
-  #services .tile.in .obj-rep .reply{animation:replyIn 7s ease-out infinite}
-  @keyframes replyIn{0%,34%{opacity:0;transform:translateY(8px)}46%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
+  #services .tile:hover .stars > *{animation:starLand .5s cubic-bezier(.23,1,.32,1) forwards}
+  #services .tile:hover .stars > *:nth-child(2){animation-delay:.12s}#services .tile:hover .stars > *:nth-child(3){animation-delay:.24s}#services .tile:hover .stars > *:nth-child(4){animation-delay:.36s}#services .tile:hover .stars > *:nth-child(5){animation-delay:.48s}
+  @keyframes starLand{0%{opacity:.3;transform:scale(.6)}60%{opacity:1;transform:scale(1.3)}100%{opacity:1;transform:none}}
+  #services .tile:hover .obj-rep .reply{animation:replyIn .6s cubic-bezier(.23,1,.32,1) .9s forwards}
+  @keyframes replyIn{to{opacity:1;transform:none}}
+}
+/* no hover (touch) or reduced motion: everything rests in its finished state */
+@media(hover:none),(prefers-reduced-motion:reduce){
+  #services .obj-sem .row.you .best,#services .tpl-cta,#services .obj-social .chip,#services .chatm .a,#services .obj-price .tag,#services .obj-rep .reply,#services .stars > *{opacity:1;transform:none}
+  #services .tpl-lines i{transform:none}#services .feed-img .sun{transform:translate(-50%,-70%);opacity:1}
+  #services .obj-sem .rows{flex-direction:column-reverse}
+}
 }
 }
 #services .obj-web .page{margin-top:0!important;position:static;z-index:auto;background:#fbf9f4;border-radius:0}   /* the page-level .page rule must not reach this mock */
