@@ -838,7 +838,7 @@ p{margin:0}
       <div class="wrap grid">
         <div class="hw-copy">
           <div class="hw-title"><span class="label hw-idx">01</span><h2 class="hw-word">Found.</h2></div>
-          <div class="hw-line"><p>A traveller searches for a place to stay near you. Your inn shows up first, on Google, Maps and Hotel Ads, with your direct rate. AI adjusts the bids every day; you approve what guests see.</p></div>
+          <div class="hw-line"><p>A traveller searches for a place to stay near you. Your inn shows up first, on Google, Maps and Hotel Ads, with your direct rate. <span class="m-cut">AI adjusts the bids every day; you approve what guests see.</span></p></div>
         </div>
         <div class="hw-objwrap">
           <div class="hw-obj google" id="hwGoogle" aria-label="A Google search for an inn near Stowe; your inn moves from third place to first, with the direct rate. 10 to 20% more website traffic, from guests ready to book">
@@ -860,7 +860,7 @@ p{margin:0}
       <div class="wrap grid">
         <div class="hw-copy">
           <div class="hw-title"><span class="label hw-idx">02</span><h2 class="hw-word">Booked.</h2></div>
-          <div class="hw-line"><p>They click through to your own website and book at your rate, not through Booking.com. More direct revenue from the guests you love.</p></div>
+          <div class="hw-line"><p>They click through to your own website and book at your rate, not through Booking.com. <span class="m-cut">More direct revenue from the guests you love.</span></p></div>
         </div>
         <div class="hw-objwrap">
           <div class="hw-obj hw-card rcpt" id="hwRcpt" aria-label="A booking confirmation at the Brass Lantern Inn: reservation confirmed for Alvarez, The Maple Room, three nights, October 12 to 15, booked on brasslanterninn.com at your rate, $245 a night; commission to Booking.com, $0">
@@ -879,7 +879,7 @@ p{margin:0}
       <div class="wrap grid">
         <div class="hw-copy">
           <div class="hw-title"><span class="label hw-idx">03</span><h2 class="hw-word">Paid on results.</h2></div>
-          <div class="hw-line"><p>We cover the ad spend. You pay 13% on the bookings we drive, and nothing on the rest. AI tracks every booking from the click to the stay; if it didn’t come from us, you don’t <span class="nw">pay for it</span>.</p></div>
+          <div class="hw-line"><p>We cover the ad spend. You pay 13% on the bookings we drive, and nothing on the rest. <span class="m-cut">AI tracks every booking from the click to the stay; if it didn’t come from us, you don’t <span class="nw">pay for it</span>.</span></p></div>
         </div>
         <div class="hw-objwrap">
           <div class="hw-obj hw-card inv" id="hwInv" aria-label="A tracked booking at the Brass Lantern Inn, October 3: the guest found you through our ad; booked on your website, three nights, $735; our fee, because they booked, 13%, $96; $639 stays with you. No booking from us, no fee. We track every one.">
@@ -1192,7 +1192,7 @@ p{margin:0}
       <div class="c-10 intro">
         <p class="label">What you’ll see · AI does the work, a person checks it</p>
         <h2 id="see-h">A simple report, <br>and a person you can message.</h2>
-        <p class="lede line">Clear reporting through a simple dashboard tracking performance, insights and direct bookings. AI adjusts your bids and budgets every day, and a person checks every change before it goes live.</p>
+        <p class="lede line"><span class="m-cut">Clear reporting through a simple dashboard tracking performance, insights and direct bookings. </span>AI adjusts your bids and budgets every day, and a person checks every change before it goes live.</p>
       </div>
     </div>
 
@@ -1552,7 +1552,7 @@ p{margin:0}
             <p class="label">Case study · The Hollis House · Camden, Maine</p>
             <div class="figs">
               <div class="fig"><span class="num" data-to="38" data-prefix="+" data-suffix="%">+0%</span><p class="fine">direct bookings in 90 days</p></div>
-              <div class="fig"><span class="num"><span data-to="61" data-suffix="%">0%</span> → <span data-to="40" data-suffix="%">0%</span></span><p class="fine">share of bookings through OTAs (Booking.com, Expedia)</p></div>
+              <div class="fig"><span class="num"><span data-to="61" data-suffix="%">0%</span> → <span data-to="40" data-suffix="%">0%</span></span><p class="fine">share of bookings through OTAs<span class="m-cut"> (Booking.com, Expedia)</span></p></div>
             </div>
             <div class="hr"></div>
             <p class="human quote">“The first thing I noticed wasn't the bookings. It was that I stopped thinking about it.”</p>
@@ -1867,7 +1867,7 @@ p{margin:0}
         <div class="cell" style="--i:1"><span class="k">Fixed fees</span><span class="v">$<span class="cnt" data-to="0">0</span></span></div>
         <div class="cell" style="--i:2"><span class="k">Our fee</span><span class="v"><span class="cnt" data-to="13">0</span>% <small class="fine" style="font-weight:400;color:var(--ink-2)">of bookings we drive</small></span></div>
       </div>
-      <p class="lede">No fixed fees. We fund the ads and take 13% of the bookings we drive. AI runs the campaigns every day. We keep the group small so every property has a person who knows it and decides what guests see.</p>
+      <p class="lede"><span class="m-cut">No fixed fees. We fund the ads and take 13% of the bookings we drive. AI runs the campaigns every day. </span>We keep the group small so every property has a person who knows it and decides what guests see.</p>
       <div class="strip steps">
         <div class="step" style="--i:0"><span class="n">01</span><span class="t">Apply — three minutes</span></div>
         <div class="step" style="--i:1"><span class="n">02</span><span class="t">A call with someone</span></div>
@@ -2736,6 +2736,14 @@ footer{background:var(--paper-2)}
 #results .tab{font-size:13px;padding:8px 12px 12px!important}
 #results .tab .prog{left:12px;right:12px;bottom:6px}
 #results .tabs{gap:4px}
+@media(max-width:899px){
+  .m-cut{display:none}                                  /* mobile-only cuts: restatements go, the point stays */
+  #services .tile .line2{display:none}                  /* the section label already says all AI-run, all approved */
+  #services .tile .line1{min-height:0}
+  #how .hw-line{font-size:16.5px;line-height:1.5}
+  #see .lede.line,#flagship .lede{font-size:17px;line-height:1.5}
+  #results .fig .fine{font-size:13px}
+}
 @media(max-width:899px){#how .hw-beat.hw-open{align-content:center;padding-top:var(--nav-h)}}   /* the opening sits mid-screen on phones instead of leaving the bottom half empty */
 @media(max-width:899px){
   #why .obj{height:auto;min-height:184px}                      /* the objects grow to their content on phones: nothing clipped top or bottom */
