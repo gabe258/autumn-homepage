@@ -367,7 +367,7 @@ p{margin:0}
     <div class="content" id="heroContent">
       <div class="wrap grid">
         <div class="c-7 stack">
-          <p class="c-12 label kicker rise" style="--i:0">AI‑Enabled Digital Marketing for independent inns, B&amp;Bs and boutique hotels</p><p class="c-12 label kicker rise kicker-m" style="--i:0">AI marketing for independent inns</p>
+          <p class="c-12 label kicker rise" style="--i:0"><span class="k1">AI‑Enabled Digital Marketing</span> <span class="k2">for independent inns, B&amp;Bs and boutique hotels</span></p><p class="c-12 label kicker rise kicker-m" style="--i:0">AI marketing for independent inns</p>
           <h1 class="rise" style="--i:1">Turn Google into <br>your #1 direct‑ <br>booking channel.</h1>
           <p class="lede rise" style="--i:2">AI puts your inn at the top of Google so guests book with you, not Booking.com. <span class="lede-more">We cover the ad spend up front and only get paid when bookings land on your own website.</span></p>
           <p class="rise" style="--i:3"><a class="btn light" href="#flagship">See if your property qualifies <span class="arr">→</span></a></p>
@@ -2735,9 +2735,14 @@ footer{background:var(--paper-2)}
 #results .tab{font-size:13px;padding:8px 12px 12px!important}
 #results .tab .prog{left:12px;right:12px;bottom:6px}
 #results .tabs{gap:4px}
+/* kicker option B: two lines, the offer emphasised, the audience beneath */
+@media(min-width:900px){
+  .hero .kicker{white-space:normal!important;max-width:none!important;font-size:12px!important;letter-spacing:.14em!important;line-height:1.5;text-wrap:initial}
+  .hero .kicker .k1{display:block;color:#fff;font-weight:600;font-size:13px;letter-spacing:.16em}
+  .hero .kicker .k2{display:block;color:rgba(255,255,255,.72);font-weight:500}
+}
 #why .serp .price{text-align:right}   /* $268 and $245 share one right edge; the fee line under the ad no longer pushes the price left */
-@media(min-width:1200px){.hero .kicker{letter-spacing:.095em;font-size:clamp(9.5px,.8vw,11.5px);white-space:nowrap;max-width:none}}   /* one line, ending inside the lede's measure */
-@media(min-width:900px) and (max-width:1199px){.hero .kicker{letter-spacing:.095em;font-size:10.5px;text-wrap:balance;max-width:none}}
+
 .brand svg.fall,.site-footer .brand svg.fall,.header .brand svg.fall{width:14px!important;height:14px!important;position:absolute;pointer-events:none;overflow:visible}   /* the falling leaves are leaf-sized, never logo-sized */
 .google .G{background:url(img/logo-google-128.png) center/contain no-repeat!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;color:transparent!important;font-size:0!important;width:22px;height:22px;display:block}
 #see .chat .person .who{background:url(img/priya-256.jpg) center/cover;width:36px;height:36px}
