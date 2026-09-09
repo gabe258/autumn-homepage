@@ -367,9 +367,9 @@ p{margin:0}
     <div class="content" id="heroContent">
       <div class="wrap grid">
         <div class="c-7 stack">
-          <p class="c-12 label kicker rise" style="--i:0">AI‑Enabled Digital Marketing for independent inns, B&amp;Bs and boutique hotels</p>
+          <p class="c-12 label kicker rise" style="--i:0">AI‑Enabled Digital Marketing for independent inns, B&amp;Bs and boutique hotels</p><p class="c-12 label kicker rise kicker-m" style="--i:0">AI marketing for independent inns</p>
           <h1 class="rise" style="--i:1">Turn Google into<br>your #1 direct‑<br>booking channel.</h1>
-          <p class="lede rise" style="--i:2">AI puts your inn at the top of Google so guests book with you, not Booking.com. We cover the ad spend and get paid only when bookings land.</p>
+          <p class="lede rise" style="--i:2">AI puts your inn at the top of Google so guests book with you, not Booking.com. <span class="lede-more">We cover the ad spend and get paid only when bookings land.</span></p>
           <p class="rise" style="--i:3"><a class="btn light" href="#flagship">See if your property qualifies <span class="arr">→</span></a></p>
           <p class="trust rise" style="--i:4"><span><svg viewBox="0 0 16 16"><path d="M.5 16v-3.8l7.7-5.9-7.8 4c-.3-.5-.4-1.5-.4-1.9C.4 3.8 3.2 1.6 4.6 1c3.3-1.6 9.1-1 11.6-.5.6 3.3-2.3 5.3-3.9 5.9h3c-.3 2.4-3.4 3.6-4.9 3.9h3.2c-.8 1.6-2.4 2.8-3.1 3.2-2.5 1.7-6.5 1-8.1.5V16H.5z"/></svg>No fixed fees</span><span><svg viewBox="0 0 16 16"><path d="M.5 16v-3.8l7.7-5.9-7.8 4c-.3-.5-.4-1.5-.4-1.9C.4 3.8 3.2 1.6 4.6 1c3.3-1.6 9.1-1 11.6-.5.6 3.3-2.3 5.3-3.9 5.9h3c-.3 2.4-3.4 3.6-4.9 3.9h3.2c-.8 1.6-2.4 2.8-3.1 3.2-2.5 1.7-6.5 1-8.1.5V16H.5z"/></svg>Nothing to run yourself</span><span><svg viewBox="0 0 16 16"><path d="M.5 16v-3.8l7.7-5.9-7.8 4c-.3-.5-.4-1.5-.4-1.9C.4 3.8 3.2 1.6 4.6 1c3.3-1.6 9.1-1 11.6-.5.6 3.3-2.3 5.3-3.9 5.9h3c-.3 2.4-3.4 3.6-4.9 3.9h3.2c-.8 1.6-2.4 2.8-3.1 3.2-2.5 1.7-6.5 1-8.1.5V16H.5z"/></svg>You approve everything</span></p>
         </div>
@@ -2737,8 +2737,21 @@ footer{background:var(--paper-2)}
 #results .tab .prog{left:12px;right:12px;bottom:6px}
 #results .tabs{gap:4px}
 
+/* phones: less copy in the hero, the landing never waits on a reveal, the door is desktop-only */
+.hero .kicker-m{display:none}
+@media(max-width:899px){
+  .hero .kicker{display:none}.hero .kicker-m{display:block;font-size:11px;letter-spacing:.12em}
+  .hero .lede .lede-more{display:none}
+  .hero .lede{font-size:17px;max-width:32ch}
+  .hero .trust{gap:6px 14px;font-size:12.5px}
+  .hero h1{font-size:clamp(36px,10.5vw,46px)}
+  #why{min-height:0;display:block;padding:var(--s-8) 0}
+  #why .head,#why .tiles{opacity:1!important;transform:none!important;transition:none!important}
+  #why .head{margin-bottom:var(--s-6)}
+}
+
 /* brand marks: Expedia's arc-and-plane on navy; Booking.com's B. on its blue */
-.thumb.logo-expedia,.th.logo-expedia{font-size:0!important;background:#1a1f3d url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><path d='M9 28a12.5 12.5 0 0 1 22.5-8.5' stroke='%23ffd233' stroke-width='3.6' fill='none' stroke-linecap='round'/><path d='M27.5 9.5l4.6 4.2-7.6 2.9-1.8-2.2z' fill='%23ffd233'/></svg>") center/76% no-repeat!important}
+.thumb.logo-expedia,.th.logo-expedia{font-size:0!important;background:#fff url(img/logo-expedia-256.png) center/100% no-repeat!important}
 /* everything we do: each widget keeps moving quietly once it has entered */
 @media(prefers-reduced-motion:no-preference){
   #services .tile.in .obj-sem .row.you{animation:semGlow 6s ease-in-out 1.2s infinite}
@@ -2785,7 +2798,7 @@ footer{background:var(--paper-2)}
 
 /* logo marks for the OTA rows (drawn, brand colours) */
 .thumb.logo-booking,.th.logo-booking,.thumb.logo-expedia,.th.logo-expedia{display:grid!important;place-items:center;font-weight:700;letter-spacing:-.03em}
-.thumb.logo-booking,.th.logo-booking{background-image:none!important}
+.thumb.logo-booking,.th.logo-booking{background:#fff url(img/logo-booking-256.png) center/100% no-repeat!important;color:transparent;font-size:0}
 .thumb.logo-booking,.th.logo-booking{background:#003580!important;color:#fff;font-size:15px}
 .th.logo-booking{font-size:11px}
 .thumb.logo-expedia,.th.logo-expedia{color:transparent;font-size:0}
